@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class KnightScript : MonoBehaviour
 {
-    public GameObject[] PathNode;
     public int Health;
     public int Speed;
     public int Damage;
 
     public int CoinsGained;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -25,8 +25,6 @@ public class KnightScript : MonoBehaviour
         {
             OnDeath();
         }
-        
-            transform.position += transform.right * Time.deltaTime * Speed;
         
     }
 
