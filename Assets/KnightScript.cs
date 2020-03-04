@@ -21,15 +21,24 @@ public class KnightScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Health < 1)
+        if (Health < 1)
         {
             OnDeath();
         }
-        
+
     }
 
     void OnDeath()
     {
 
     }
+
+    public void ReachedEnd()
+    {
+        Destroy(gameObject);
+    }
+
+    
 }
+
+

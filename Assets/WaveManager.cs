@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
-    public Transform[] Waypoints;
-    public WaveManager WaveManager;
+    public Wave[] Waves;
+    private int WaveCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        WaveManager.StartWave();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-
+    public void StartWave()
+    {
+        Instantiate(Waves[WaveCount]);
+        WaveCount++;
+    }
 
 }

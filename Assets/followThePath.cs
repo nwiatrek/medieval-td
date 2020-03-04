@@ -12,10 +12,12 @@ public class followThePath : MonoBehaviour
     // to the next one
     private int waypointIndex = 0;
 
+    private KnightScript knight;
+
     // Use this for initialization
     private void Start()
     {
-        KnightScript knight = gameObject.GetComponentInParent(typeof(KnightScript)) as KnightScript;
+        knight = gameObject.GetComponentInParent(typeof(KnightScript)) as KnightScript;
         waypoints = FindObjectOfType<MapManager>().Waypoints;
 
         moveSpeed = knight.Speed;
@@ -49,8 +51,34 @@ public class followThePath : MonoBehaviour
             // and Enemy starts to walk to the next waypoint
             if (transform.position == waypoints[waypointIndex].transform.position)
             {
+                RotateIntoMoveDirection();
                 waypointIndex += 1;
             }
         }
+        if(waypointIndex == waypoints.Length)
+        {
+            knight.ReachedEnd();
+        }
+    }
+
+
+    private void RotateIntoMoveDirection()
+    {
+        if(knight.transform.position == waypoints[waypoints.Length-1].transform.position)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        //1
+        Vector3 newStartPosition = waypoints[waypointIndex].transform.position;
+        Vector3 newEndPosition = waypoints[waypointIndex + 1].transform.position;
+        Vector3 newDirection = (newEndPosition - newStartPosition);
+        //2
+        float x = newDirection.x;
+        float y = newDirection.y;
+        float rotationAngle = Mathf.Atan2(y, x) * 180 / Mathf.PI;
+        //3
+        knight.transform.rotation = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
     }
 }
