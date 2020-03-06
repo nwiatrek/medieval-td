@@ -61,7 +61,6 @@ public class followThePath : MonoBehaviour
         }
     }
 
-
     private void RotateIntoMoveDirection()
     {
         if(knight.transform.position == waypoints[waypoints.Length-1].transform.position)

@@ -9,14 +9,13 @@ public class KnightScript : MonoBehaviour
     public int Damage;
 
     public int CoinsGained;
-
+    private GameManagerBehavior GameManagerBehavior;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GameManagerBehavior = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -25,20 +24,22 @@ public class KnightScript : MonoBehaviour
         {
             OnDeath();
         }
-
     }
 
     void OnDeath()
     {
-
+        GameManagerBehavior.IncreaseCoin(CoinsGained);
+        RemoveKnight();
     }
 
     public void ReachedEnd()
     {
-        Destroy(gameObject);
+        GameManagerBehavior.DecreaseHealth(Damage);
+        RemoveKnight();
     }
 
-    
+    private void RemoveKnight()
+    {
+        Destroy(gameObject);
+    }
 }
-
-

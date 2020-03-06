@@ -98,7 +98,7 @@ MonoBehaviour:
   Health: 1
   Speed: 4
   Damage: 1
-  CoinsGained: 1
+  CoinsGained: 10
 --- !u!114 &9026036346295695518
 MonoBehaviour:
   m_ObjectHideFlags: 0
